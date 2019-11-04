@@ -15,6 +15,29 @@ AddressBook.prototype.assignId = function() {
   return this.currentId;
 }
 
+AddressBook.prototype.findContact = function(id) {
+  for (var i=0; i< this.contacts.length; i++) {
+    if (this.contacts[i]) {     // <-- This line is new!
+      if (this.contacts[i].id == id) {
+        return this.contacts[i];
+      }
+    }                          // <-- This line is also new!
+  };
+  return false;
+}
+
+AddressBook.prototype.deleteContact = function(id) {
+  for (var i=0; i< this.contacts.length; i++) {
+    if (this.contacts[i]) {     // <-- This line is new!
+      if (this.contacts[i].id == id) {
+        delete this.contacts[i];
+        return true;
+      }
+    }                          // <-- This line is also new!
+  };
+  return false;
+}
+
 // Business Logic for contacts //
 function Contact(firstName, lastName, phoneNumber) {
   this.firstName = firstName;
